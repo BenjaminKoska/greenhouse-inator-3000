@@ -12,7 +12,10 @@
   "author": "The Code Badgers",
   "license": "UNLICENSED",
   "dependencies": {
+    "array.observe": "0.0.1",
     "express": "^4.17.1",
-    "mqtt": "^3.0.0"
+    "mqtt": "^3.0.0",
+    "nedb": "^1.8.0",
+    "nosql": "^6.1.0"
   }
 }
