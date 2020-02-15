@@ -128,13 +128,25 @@ const getMostRecentForAllGreenhouses = function(){
 
 const getHourlyGreenhouseData = function(uniqueId){
     let hourlygreenhouses;
+
+    let temp = [];
+    let humidity = [];
+    let pressure = [];
+    let light = [];
     db.greenHouses.forEach(greenHouse => {
         if(greenHouse[0].uniqueId == uniqueId){
             hourlygreenhouses = greenHouse.slice(-24);  
         }
     });
 
-    return hourlygreenhouses;
+    hourlygreenhouses.forEach(hourlygreenhouse => {
+        temp.push(hourlygreenhouse.temperature);
+        humidity.push(hourlygreenhouse.humidity);
+        pressure.push(hourlygreenhouse.pressure);
+        light.push(hourlygreenhouse.light);
+    });
+
+    return [temp, humidity, pressure, light];
 }
 
 
