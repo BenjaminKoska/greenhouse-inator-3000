@@ -12,6 +12,7 @@
   "author": "The Code Badgers",
   "license": "UNLICENSED",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mqtt": "^3.0.0"
   }
 }

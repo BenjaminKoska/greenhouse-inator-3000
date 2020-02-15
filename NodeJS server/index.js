@@ -1,8 +1,36 @@
 const express = require(`express`);
+const mqtt = require(`mqtt`);
 
+  //////////////
+ //// VARS ////
+//////////////
+const webServerPort = 80;
+const mqttUrl = `mqtt://broker.hivemq.com`
+const mqttPort = `1883`
+const mqttTopic = `/DeCodeBadgers`
+
+
+const mqttClient = mqtt.connect(`${mqttUrl}:${mqttPort}`)
 const server = express();
 const router = express.Router();
-const connectionport = 80;
+
+  /////////////////////
+ //// MQTT CLIENT ////
+/////////////////////
+const mqttClientConnect = function(){
+    mqttClient.on('connect', function(){
+        mqttClient.subscribe(mqttTopic, function(e){
+            if(e){
+                console.log(e.message);
+            } else {
+                mqttClient.publish(mqttTopic, `API has made connection`);
+                console.log(`MQTT connection made to ${mqttUrl} on Topic: ${mqttTopic}`)
+            }
+        })
+    })
+}
+
+mqttClientConnect();
 
 
   ///////////////////
@@ -23,8 +51,8 @@ createServerResponse(`/`, `index.html`);
 //////////////
 const init = function(){
     server.use('/', router);
-    server.listen(connectionport, function(){
-        console.log(`Server is listening on port: ${connectionport}`);
+    server.listen(webServerPort, function(){
+        console.log(`Server is listening on port: ${webServerPort}`);
     })
 }
 
