@@ -621,6 +621,168 @@
         "doorOpen": 1,
         "pressure": 85212,
         "datetime": "2/15/2020, 8:35:46 PM"
+      },
+      {
+        "uniqueId": 1,
+        "light": 8,
+        "humidity": 52.15,
+        "temperature": 24.41,
+        "doorOpen": 1,
+        "pressure": 84944,
+        "datetime": "2020-02-15T20:03:11.813Z"
+      },
+      {
+        "uniqueId": 1,
+        "light": 7,
+        "humidity": 53.48,
+        "temperature": 25.57,
+        "doorOpen": 1,
+        "pressure": 84943,
+        "datetime": "2020-02-15T20:03:17.766Z"
+      },
+      {
+        "uniqueId": 1,
+        "light": 8,
+        "humidity": 50.73,
+        "temperature": 25.51,
+        "doorOpen": 1,
+        "pressure": 84938,
+        "datetime": "2020-02-15T20:03:23.790Z"
+      },
+      {
+        "uniqueId": 1,
+        "light": 8,
+        "humidity": 53.6,
+        "temperature": 25.33,
+        "doorOpen": 1,
+        "pressure": 84932,
+        "datetime": "2020-02-15T20:03:29.891Z"
+      },
+      {
+        "uniqueId": 1,
+        "light": 7,
+        "humidity": 53.6,
+        "temperature": 25.7,
+        "doorOpen": 1,
+        "pressure": 84933,
+        "datetime": "2020-02-15T20:03:35.906Z"
+      },
+      {
+        "uniqueId": 1,
+        "light": 7,
+        "humidity": 54.08,
+        "temperature": 25.49,
+        "doorOpen": 1,
+        "pressure": 84929,
+        "datetime": "2020-02-15T20:03:41.922Z"
+      },
+      {
+        "uniqueId": 1,
+        "light": 7,
+        "humidity": 54.6,
+        "temperature": 25.72,
+        "doorOpen": 1,
+        "pressure": 84923,
+        "datetime": "2020-02-15T20:03:47.943Z"
+      },
+      {
+        "uniqueId": 1,
+        "light": 7,
+        "humidity": 52.83,
+        "temperature": 25.57,
+        "doorOpen": 1,
+        "pressure": 84923,
+        "datetime": "2020-02-15T20:03:53.973Z"
+      },
+      {
+        "uniqueId": 1,
+        "light": 7,
+        "humidity": 54.6,
+        "temperature": 25.43,
+        "doorOpen": 1,
+        "pressure": 84913,
+        "datetime": "2020-02-15T20:03:59.976Z"
+      },
+      {
+        "uniqueId": 1,
+        "light": 7,
+        "humidity": 51.9,
+        "temperature": 25.53,
+        "doorOpen": 1,
+        "pressure": 84919,
+        "datetime": "2020-02-15T20:04:05.990Z"
+      },
+      {
+        "uniqueId": 1,
+        "light": 7,
+        "humidity": 57.08,
+        "temperature": 25.7,
+        "doorOpen": 1,
+        "pressure": 84917,
+        "datetime": "2020-02-15T20:04:12.006Z"
+      },
+      {
+        "uniqueId": 1,
+        "light": 7,
+        "humidity": 53.86,
+        "temperature": 25.41,
+        "doorOpen": 1,
+        "pressure": 84901,
+        "datetime": "2020-02-15T20:04:18.111Z"
+      },
+      {
+        "uniqueId": 1,
+        "light": 7,
+        "humidity": 53.86,
+        "temperature": 25.95,
+        "doorOpen": 1,
+        "pressure": 84913,
+        "datetime": "2020-02-15T20:04:24.128Z"
+      },
+      {
+        "uniqueId": 1,
+        "light": 7,
+        "humidity": 50.87,
+        "temperature": 25.74,
+        "doorOpen": 1,
+        "pressure": 84902,
+        "datetime": "2020-02-15T20:04:30.143Z"
+      },
+      {
+        "uniqueId": 1,
+        "light": 7,
+        "humidity": 52.06,
+        "temperature": 25.74,
+        "doorOpen": 1,
+        "pressure": 84896,
+        "datetime": "2020-02-15T20:04:36.158Z"
+      },
+      {
+        "uniqueId": 1,
+        "light": 7,
+        "humidity": 48.96,
+        "temperature": 25.74,
+        "doorOpen": 1,
+        "pressure": 84892,
+        "datetime": "2020-02-15T20:04:42.188Z"
+      },
+      {
+        "uniqueId": 1,
+        "light": 8,
+        "humidity": 51.73,
+        "temperature": 25.74,
+        "doorOpen": 1,
+        "pressure": 84886,
+        "datetime": "2020-02-15T20:04:48.199Z"
+      },
+      {
+        "uniqueId": 1,
+        "light": 8,
+        "humidity": 50.78,
+        "temperature": 26.03,
+        "doorOpen": 1,
+        "pressure": 84884,
+        "datetime": "2020-02-15T20:04:54.207Z"
       }
     ]
   ],

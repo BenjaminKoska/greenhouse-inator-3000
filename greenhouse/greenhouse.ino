@@ -133,7 +133,7 @@ void loop() {
   }
 
 
-  snprintf(buff, 128, "{\"UniqueId\":%d,\"light\":%d,\"humidity\":%0.2f,\"temperature\":%0.2f,\"doorOpen\":%d,\"pressure:\":%d}",id,lux,humidity,temp,buttonPressed, pressure);
+  snprintf(buff, 128, "{\"uniqueId\":%d,\"light\":%d,\"humidity\":%0.2f,\"temperature\":%0.2f,\"doorOpen\":%d,\"pressure\":%d}",id,lux,humidity,temp,buttonPressed, pressure);
   
   Serial.println(buff);
   
@@ -145,7 +145,7 @@ void loop() {
     if(mqttClient.connect(MQTT_CLIENT_ID)) {
       Serial.println("MQTT connected\n");
       mqttClient.publish(MQTT_TOPIC_PREFIX "/API",buff);
-      mqttClient.publish(MQTT_TOPIC_PREFIX, "Perry nee");
+ 
     } else {
       Serial.print("MQTT connection failed, rc=");
       Serial.print(mqttClient.state());
@@ -154,8 +154,8 @@ void loop() {
     }
     
   }
-
-  delay(5000);
+  delay(6000);
+  //delay(900000);
   /* Process incoming MQTT messages */
   mqttClient.loop();
 
