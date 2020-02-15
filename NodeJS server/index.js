@@ -81,12 +81,6 @@ const createServerResponse = function(link, file){
     })
 }
 
-const createAPIEndpoint = function(link, data){
-    router.get(link, (req, res) => {
-        return res.send(data);
-      });
-}
-
 
   //////////////////
  //// DATABASE ////
@@ -155,7 +149,9 @@ const init = async function(){
 
     await mqttClientConnect();
     createServerResponse(`/`, `index.html`);
-    createAPIEndpoint(`/recent`, getMostRecentForAllGreenhouses())
+    router.get(`/recent`, (req, res) => {
+        return res.send(getMostRecentForAllGreenhouses());
+      });
 
 }
 

@@ -85,6 +85,17 @@
         "doorOpen": false,
         "datetime": "2020-02-15T18:07:26.255Z"
       }
+    ],
+    [
+      {
+        "uniqueId": "4",
+        "light": "2000",
+        "humidity": "55.0",
+        "temperature": "18.0",
+        "pressure": "18.0",
+        "doorOpen": false,
+        "datetime": "2020-02-15T18:13:03.613Z"
+      }
     ]
   ],
   "greenHouseNames": [],
