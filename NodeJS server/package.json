@@ -10,5 +10,8 @@
     "greenhouse-inator"
   ],
   "author": "The Code Badgers",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
