@@ -288,6 +288,15 @@
         "doorOpen": 1,
         "pressure": 84770,
         "datetime": "2020-02-15T22:02:00"
+      },
+      {
+        "uniqueId": 1,
+        "light": 4,
+        "humidity": 51.46,
+        "temperature": 25.97,
+        "doorOpen": 1,
+        "pressure": 84791,
+        "datetime": "2020-02-15T22:03:01"
       }
     ]
   ],
