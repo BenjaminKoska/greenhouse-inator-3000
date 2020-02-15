@@ -126,7 +126,16 @@ const getMostRecentForAllGreenhouses = function(){
     return newestgreenhouses;
 }
 
+const getHourlyGreenhouseData = function(uniqueId){
+    let hourlygreenhouses;
+    db.greenHouses.forEach(greenHouse => {
+        if(greenHouse[0].uniqueId == uniqueId){
+            hourlygreenhouses = greenHouse.slice(-24);  
+        }
+    });
 
+    return hourlygreenhouses;
+}
 
 
   /////////////////
@@ -176,6 +185,10 @@ const init = async function(){
     router.get(`/recent`, (req, res) => {
         return res.send(getMostRecentForAllGreenhouses());
       });
+
+    router.get(`/graph/:uniqueId`, (req, res) => {
+        return res.send(getHourlyGreenhouseData(req.params.uniqueId));
+    });
 
 }
 
