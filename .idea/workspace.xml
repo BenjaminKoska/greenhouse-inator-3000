@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a44e71f-ae5e-4df9-a439-c4234e55b75e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/NodeJS server/html/js/charts/chart-line-sunlight.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NodeJS server/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/NodeJS server/html/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NodeJS server/html/js/demo/chart-pie-demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/NodeJS server/html/js/demo/chart-pie-demo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NodeJS server/html/js/customScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/NodeJS server/html/js/customScript.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,8 +23,8 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="5" />
-          <entry key="HTML" value="7" />
-          <entry key="JavaScript" value="5" />
+          <entry key="HTML" value="8" />
+          <entry key="JavaScript" value="6" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="SVG" value="1" />
         </counts>
@@ -33,8 +32,8 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="207" />
-          <entry key="HTML" value="1216" />
-          <entry key="JavaScript" value="1295" />
+          <entry key="HTML" value="1311" />
+          <entry key="JavaScript" value="2290" />
           <entry key="PLAIN_TEXT" value="5" />
         </counts>
       </usages-collector>
@@ -43,35 +42,25 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/NodeJS server/html/index.html">
+        <entry file="file://$PROJECT_DIR$/NodeJS server/html/js/customScript.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="203" column="36" lean-forward="true" selection-start-line="203" selection-start-column="36" selection-end-line="211" selection-end-column="43" />
+            <state relative-caret-position="663">
+              <caret line="39" column="24" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
               <folding>
-                <element signature="e#28912#28918#0" expanded="true" />
+                <element signature="e#757#1991#0" />
+                <element signature="e#2016#2165#0" />
+                <element signature="e#3838#4541#0" />
+                <element signature="e#4940#5381#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/NodeJS server/html/js/demo/chart-pie-demo.js">
+        <entry file="file://$PROJECT_DIR$/NodeJS server/html/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/NodeJS server/html/js/charts/chart-line-sunlight.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="30" column="48" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="48" />
-              <folding>
-                <element signature="n#!!block;n#number_format#0" />
-                <element signature="e#2917#2945#0" />
-              </folding>
+            <state relative-caret-position="210">
+              <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
             </state>
           </provider>
         </entry>
@@ -100,13 +89,16 @@
       <find>table</find>
       <find>tem</find>
       <find>temper</find>
-      <find>door</find>
       <find>doorinfo</find>
       <find>border-left-info</find>
       <find>pressinfo</find>
       <find>sunlight over</find>
       <find>3000,</find>
       <find>su</find>
+      <find>humidit</find>
+      <find>humidInfoField</find>
+      <find>doorinfofield</find>
+      <find>door</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -119,11 +111,11 @@
         <option value="$PROJECT_DIR$/NodeJS server/html/css/sb-admin-2.css" />
         <option value="$PROJECT_DIR$/NodeJS server/html/css/customStyle.css" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/NodeJS server/html/js/customScript.js" />
         <option value="$PROJECT_DIR$/NodeJS server/html/js/chart-line-sunlight.js" />
         <option value="$PROJECT_DIR$/NodeJS server/html/js/charts/chart-line-sunlight.js" />
-        <option value="$PROJECT_DIR$/NodeJS server/html/index.html" />
         <option value="$PROJECT_DIR$/NodeJS server/html/js/demo/chart-pie-demo.js" />
+        <option value="$PROJECT_DIR$/NodeJS server/html/js/customScript.js" />
+        <option value="$PROJECT_DIR$/NodeJS server/html/index.html" />
       </list>
     </option>
   </component>
@@ -266,7 +258,7 @@
       <path value="$PROJECT_DIR$/NodeJS server/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="width" value="1165" />
     <option name="height" value="1038" />
@@ -340,6 +332,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="jsx.switch.disabled" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -373,19 +366,19 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1581770698767</updated>
-      <workItem from="1581770700050" duration="12031000" />
+      <workItem from="1581770700050" duration="15723000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12031000" />
+    <option name="totallyTimeSpent" value="15723000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.23288591" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.23288591" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
@@ -503,17 +496,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NodeJS server/html/js/customScript.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
-          <caret line="60" column="46" selection-start-line="60" selection-start-column="46" selection-end-line="60" selection-end-column="46" />
-          <folding>
-            <element signature="e#90#98#0" />
-            <element signature="e#478#586#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/NodeJS server/html/js/demo/chart-area-demo.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -532,20 +514,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NodeJS server/html/index.html">
+    <entry file="file://$PROJECT_DIR$/NodeJS server/html/js/demo/chart-pie-demo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="203" column="36" lean-forward="true" selection-start-line="203" selection-start-column="36" selection-end-line="211" selection-end-column="43" />
+        <state relative-caret-position="204">
+          <caret line="12" column="55" selection-start-line="12" selection-start-column="55" selection-end-line="12" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NodeJS server/html/js/customScript.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="39" column="24" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
           <folding>
-            <element signature="e#28912#28918#0" expanded="true" />
+            <element signature="e#757#1991#0" />
+            <element signature="e#2016#2165#0" />
+            <element signature="e#3838#4541#0" />
+            <element signature="e#4940#5381#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NodeJS server/html/js/demo/chart-pie-demo.js">
+    <entry file="file://$PROJECT_DIR$/NodeJS server/html/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+        <state relative-caret-position="210">
+          <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
         </state>
       </provider>
     </entry>
