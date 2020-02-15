@@ -1,3 +1,5 @@
+const allInfoUrl = `https://apilink/api/allinfo`;
+
 const doorStatusCard = document.querySelector(`#doorStatusCard`);
 const tempInfoField = document.querySelector(`#tempInfoField`);
 const pressInfoField = document.querySelector(`#pressInfoField`);
@@ -11,9 +13,10 @@ let isDoorOpen = null;
 let curTemp = null;
 let curPress = null;
 let curHumid = null;
+
 let sensorData = [
     {
-        "uniqueId": "1",
+        "uniqueId": "mock 1",
         "light": 5000,
         "humidity": 30,
         "temperature": null,
@@ -21,7 +24,7 @@ let sensorData = [
         "pressure": 160,
     },
     {
-        "uniqueId": "2",
+        "uniqueId": "mock 2",
         "light": 10000,
         "humidity": 40,
         "temperature": 40,
@@ -29,7 +32,7 @@ let sensorData = [
         "pressure": 160,
     },
     {
-        "uniqueId": "69",
+        "uniqueId": "mock 69",
         "light": 69000,
         "humidity": 50,
         "temperature": 32,
@@ -37,7 +40,7 @@ let sensorData = [
         "pressure": 160,
     },
     {
-        "uniqueId": "420",
+        "uniqueId": "mock 420",
         "light": null,
         "humidity": null,
         "temperature": null,
@@ -46,13 +49,21 @@ let sensorData = [
     },
 ];
 
-let init = () => {
+async function init() {
     console.log("custom script loaded");
+    //sensorData = await getAllData(allInfoUrl); //TODO remove commenting if you want to call to the db
 
     generateList();
+    updateInfo(0); //open page with current page displaying info of sensor 1
+}
 
-    updateInfo(0);
-};
+async function getAllData(url = ``) {
+    const response = await fetch(url, {
+        method: `GET`,
+        mode: `cors`
+    });
+    return await response.json()
+}
 
 let updateInfo = (clickedItem) => {
     isDoorOpen = sensorData[clickedItem].doorOpen;
@@ -92,7 +103,7 @@ let openDoor = () => {
                                 </div>
                             </div>
                         </div>`;
-};
+};  //show door that is opened
 
 let closeDoor = () => {
     doorStatusCard.classList.remove('fa-door-open');
@@ -114,7 +125,7 @@ let closeDoor = () => {
                                 </div>
                             </div>
                         </div>`;
-};
+}; // show closed door
 
 let stupidDoor = () => {
     doorStatusCard.classList.remove('fa-door-open');
@@ -136,7 +147,7 @@ let stupidDoor = () => {
                                 </div>
                             </div>
                         </div>`;
-}; //door with missing info
+}; // show door with missing info
 
 let updateTemp = () => {
     if (curTemp != null) {
@@ -178,6 +189,6 @@ let generateList = () => {
     }
 
     sensorSidebar.innerHTML = resultList;
-};
+}; //generate the list of sensors
 
 document.addEventListener('DOMContentLoaded', init);
