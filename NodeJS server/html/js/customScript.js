@@ -1,0 +1,3 @@
+let curSensorOnScreen = 0;
+
+
