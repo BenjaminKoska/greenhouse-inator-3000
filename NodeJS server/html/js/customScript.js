@@ -1,4 +1,4 @@
-const allInfoUrl = `https://apilink/api/allinfo`;
+const recentInfoUrl = `http://localhost/recent`;
 
 const doorStatusCard = document.querySelector(`#doorStatusCard`);
 const tempInfoField = document.querySelector(`#tempInfoField`);
@@ -51,7 +51,7 @@ let sensorData = [
 
 async function init() {
     console.log("custom script loaded");
-    //sensorData = await getAllData(allInfoUrl); //TODO remove commenting if you want to call to the db
+    sensorData = await getAllData(recentInfoUrl); //TODO remove commenting if you want to call to the db
 
     generateList();
     updateInfo(0); //open page with current page displaying info of sensor 1
