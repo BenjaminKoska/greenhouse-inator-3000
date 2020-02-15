@@ -32,6 +32,14 @@
         "temperature": "10.0",
         "doorOpen": false,
         "datetime": "2020-02-15T17:41:10.442Z"
+      },
+      {
+        "uniqueId": "1",
+        "light": "2000",
+        "humidity": "50.0",
+        "temperature": "15.0",
+        "doorOpen": false,
+        "datetime": "2020-02-15T18:06:54.706Z"
       }
     ],
     [
@@ -58,6 +66,24 @@
         "temperature": "10.0",
         "doorOpen": false,
         "datetime": "2020-02-15T17:41:23.064Z"
+      },
+      {
+        "uniqueId": "2",
+        "light": "2000",
+        "humidity": "50.0",
+        "temperature": "15.0",
+        "doorOpen": false,
+        "datetime": "2020-02-15T18:07:03.497Z"
+      }
+    ],
+    [
+      {
+        "uniqueId": "3",
+        "light": "2000",
+        "humidity": "50.0",
+        "temperature": "15.0",
+        "doorOpen": false,
+        "datetime": "2020-02-15T18:07:26.255Z"
       }
     ]
   ],

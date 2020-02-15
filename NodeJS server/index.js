@@ -147,6 +147,8 @@ const writeToFile = function(filename, data){
 const init = async function(){
     db = await readInDB(`${__dirname}/db.db`);
     server.use('/', router);
+    server.use(express.static('html'))
+
     server.listen(webServerPort, function(){
         console.log(`Webserver is listening on port: ${webServerPort}`);
     })
