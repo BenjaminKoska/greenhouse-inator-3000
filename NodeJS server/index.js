@@ -19,10 +19,7 @@ const router = express.Router();
 /////////////////////
 const mqttClientConnect = async function(){
     return new Promise(function(resolve, reject){
-        mqttClient.on('connect', function(e){
-            if(e){
-                reject();
-            }
+        mqttClient.on('connect', function(){
             mqttClient.subscribe(mqttTopic, function(e){
                 if(e){
                     console.log(e.message);
