@@ -1,0 +1,66 @@
+{
+  "greenHouses": [
+    [
+      {
+        "uniqueId": "1",
+        "light": "2000",
+        "humidity": "50.0",
+        "temperature": "10.0",
+        "doorOpen": false,
+        "datetime": "2020-02-15T17:40:31.079Z"
+      },
+      {
+        "uniqueId": "1",
+        "light": "2000",
+        "humidity": "50.0",
+        "temperature": "10.0",
+        "doorOpen": false,
+        "datetime": "2020-02-15T17:40:34.747Z"
+      },
+      {
+        "uniqueId": "1",
+        "light": "2000",
+        "humidity": "50.0",
+        "temperature": "10.0",
+        "doorOpen": false,
+        "datetime": "2020-02-15T17:40:49.045Z"
+      },
+      {
+        "uniqueId": "1",
+        "light": "2000",
+        "humidity": "50.0",
+        "temperature": "10.0",
+        "doorOpen": false,
+        "datetime": "2020-02-15T17:41:10.442Z"
+      }
+    ],
+    [
+      {
+        "uniqueId": "2",
+        "light": "2000",
+        "humidity": "50.0",
+        "temperature": "10.0",
+        "doorOpen": false,
+        "datetime": "2020-02-15T17:40:56.695Z"
+      },
+      {
+        "uniqueId": "2",
+        "light": "2000",
+        "humidity": "50.0",
+        "temperature": "10.0",
+        "doorOpen": false,
+        "datetime": "2020-02-15T17:41:01.438Z"
+      },
+      {
+        "uniqueId": "2",
+        "light": "2000",
+        "humidity": "50.0",
+        "temperature": "10.0",
+        "doorOpen": false,
+        "datetime": "2020-02-15T17:41:23.064Z"
+      }
+    ]
+  ],
+  "greenHouseNames": [],
+  "plants": []
+}
