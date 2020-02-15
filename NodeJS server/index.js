@@ -17,20 +17,25 @@ const router = express.Router();
   /////////////////////
  //// MQTT CLIENT ////
 /////////////////////
-const mqttClientConnect = function(){
-    mqttClient.on('connect', function(){
-        mqttClient.subscribe(mqttTopic, function(e){
+const mqttClientConnect = async function(){
+    return new Promise(function(resolve, reject){
+        mqttClient.on('connect', function(e){
             if(e){
-                console.log(e.message);
-            } else {
-                mqttClient.publish(mqttTopic, `API has made connection`);
-                console.log(`MQTT connection made to ${mqttUrl} on Topic: ${mqttTopic}`)
+                reject();
             }
+            mqttClient.subscribe(mqttTopic, function(e){
+                if(e){
+                    console.log(e.message);
+                    reject();
+                } else {
+                    mqttClient.publish(mqttTopic, `API has made connection`);
+                    console.log(`MQTT connection made to ${mqttUrl} on Topic: ${mqttTopic}`)
+                    resolve();
+                }
+            })
         })
     })
 }
-
-mqttClientConnect();
 
 
   ///////////////////
@@ -42,18 +47,17 @@ const createServerResponse = function(link, file){
     })
 }
 
-createServerResponse(`/`, `index.html`);
-
-
-
   //////////////
  //// INIT ////
 //////////////
-const init = function(){
+const init = async function(){
     server.use('/', router);
     server.listen(webServerPort, function(){
-        console.log(`Server is listening on port: ${webServerPort}`);
+        console.log(`Webserver is listening on port: ${webServerPort}`);
     })
+
+    await mqttClientConnect();
+    createServerResponse(`/`, `index.html`);
 }
 
 
