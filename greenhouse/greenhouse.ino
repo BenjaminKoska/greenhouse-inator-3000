@@ -137,15 +137,15 @@ void loop() {
   
   Serial.println(buff);
   
-  //mqttClient.publish(MQTT_TOPIC_PREFIX "/API",buff);
+  mqttClient.publish(MQTT_TOPIC_PREFIX "/API",buff);
 
   /* Check MQTT connection */
   if(!mqttClient.connected()) {
     Serial.print("Reconnecting to MQTT server\n");
     if(mqttClient.connect(MQTT_CLIENT_ID)) {
       Serial.println("MQTT connected\n");
-      //mqttClient.publish(MQTT_TOPIC_PREFIX "/API",buff);
-      //mqttClient.publish(MQTT_TOPIC_PREFIX, "Perry nee");
+      mqttClient.publish(MQTT_TOPIC_PREFIX "/API",buff);
+      mqttClient.publish(MQTT_TOPIC_PREFIX, "Perry nee");
     } else {
       Serial.print("MQTT connection failed, rc=");
       Serial.print(mqttClient.state());
