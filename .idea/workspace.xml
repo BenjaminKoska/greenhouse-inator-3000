@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a44e71f-ae5e-4df9-a439-c4234e55b75e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NodeJS server/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/NodeJS server/html/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NodeJS server/html/js/customScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/NodeJS server/html/js/customScript.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,7 +24,7 @@
           <entry key="CSS" value="5" />
           <entry key="HTML" value="8" />
           <entry key="JavaScript" value="6" />
-          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="PLAIN_TEXT" value="2" />
           <entry key="SVG" value="1" />
         </counts>
       </usages-collector>
@@ -34,7 +33,7 @@
           <entry key="CSS" value="207" />
           <entry key="HTML" value="1311" />
           <entry key="JavaScript" value="2290" />
-          <entry key="PLAIN_TEXT" value="5" />
+          <entry key="PLAIN_TEXT" value="6" />
         </counts>
       </usages-collector>
     </session>
@@ -56,11 +55,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NodeJS server/html/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
+            <state relative-caret-position="235">
+              <caret line="60" selection-start-line="60" selection-end-line="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="6" selection-start-column="6" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -99,6 +107,7 @@
       <find>humidInfoField</find>
       <find>doorinfofield</find>
       <find>door</find>
+      <find>sensor1</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -110,12 +119,12 @@
         <option value="$PROJECT_DIR$/NodeJS server/html/assets/css/screen.css" />
         <option value="$PROJECT_DIR$/NodeJS server/html/css/sb-admin-2.css" />
         <option value="$PROJECT_DIR$/NodeJS server/html/css/customStyle.css" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/NodeJS server/html/js/chart-line-sunlight.js" />
         <option value="$PROJECT_DIR$/NodeJS server/html/js/charts/chart-line-sunlight.js" />
         <option value="$PROJECT_DIR$/NodeJS server/html/js/demo/chart-pie-demo.js" />
         <option value="$PROJECT_DIR$/NodeJS server/html/js/customScript.js" />
         <option value="$PROJECT_DIR$/NodeJS server/html/index.html" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -258,7 +267,7 @@
       <path value="$PROJECT_DIR$/NodeJS server/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="width" value="1165" />
     <option name="height" value="1038" />
@@ -366,12 +375,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1581770698767</updated>
-      <workItem from="1581770700050" duration="15723000" />
+      <workItem from="1581770700050" duration="16315000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15723000" />
+    <option name="totallyTimeSpent" value="16315000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -452,13 +461,6 @@
         <state relative-caret-position="-255" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" selection-start-column="5" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/NodeJS server/html/css/sb-admin-2.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="528">
@@ -536,8 +538,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/NodeJS server/html/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
+        <state relative-caret-position="235">
+          <caret line="60" selection-start-line="60" selection-end-line="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="6" selection-start-column="6" selection-end-column="6" />
         </state>
       </provider>
     </entry>
