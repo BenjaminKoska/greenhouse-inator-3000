@@ -41,8 +41,7 @@ const mqttClientConnect = async function(){
 }
 
 const addDataToDB = function(data){
-    let datetime = new Date();
-    data.datetime = datetime.toISOString();
+    data.datetime = returnCurrentTime();
     let currentgreenhouse = data;
 
     if(db.greenHouses.length > 0){
@@ -55,6 +54,30 @@ const addDataToDB = function(data){
     }
 
     updateDB();
+}
+
+const returnCurrentTime = function(){
+    let dt = new Date(),
+	current_date = dt.getDate(),
+	current_month = dt.getMonth() + 1,
+	current_year = dt.getFullYear(),
+	current_hrs = dt.getHours(),
+	current_mins = dt.getMinutes(),
+	current_secs = dt.getSeconds(),
+	current_datetime;
+
+// Add 0 before date, month, hrs, mins or secs if they are less than 0
+current_date = current_date < 10 ? '0' + current_date : current_date;
+current_month = current_month < 10 ? '0' + current_month : current_month;
+current_hrs = current_hrs < 10 ? '0' + current_hrs : current_hrs;
+current_mins = current_mins < 10 ? '0' + current_mins : current_mins;
+current_secs = current_secs < 10 ? '0' + current_secs : current_secs;
+
+// Current datetime
+// String such as 2016-07-16T19:20:30
+current_datetime = current_year + '-' + current_month + '-' + current_date + 'T' + current_hrs + ':' + current_mins + ':' + current_secs;
+
+return current_datetime;
 }
 
 const checkDb = function(currentgreenhouse){
@@ -149,6 +172,7 @@ const init = async function(){
 
     await mqttClientConnect();
     createServerResponse(`/`, `index.html`);
+
     router.get(`/recent`, (req, res) => {
         return res.send(getMostRecentForAllGreenhouses());
       });
