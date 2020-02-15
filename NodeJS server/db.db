@@ -629,7 +629,11 @@
         "temperature": 24.41,
         "doorOpen": 1,
         "pressure": 84944,
+<<<<<<< HEAD
         "datetime": "2020-02-15T20:03:11.244Z"
+=======
+        "datetime": "2020-02-15T20:03:11.813Z"
+>>>>>>> master
       },
       {
         "uniqueId": 1,
@@ -638,7 +642,11 @@
         "temperature": 25.57,
         "doorOpen": 1,
         "pressure": 84943,
+<<<<<<< HEAD
         "datetime": "2020-02-15T20:03:17.200Z"
+=======
+        "datetime": "2020-02-15T20:03:17.766Z"
+>>>>>>> master
       },
       {
         "uniqueId": 1,
@@ -647,7 +655,11 @@
         "temperature": 25.51,
         "doorOpen": 1,
         "pressure": 84938,
+<<<<<<< HEAD
         "datetime": "2020-02-15T20:03:23.223Z"
+=======
+        "datetime": "2020-02-15T20:03:23.790Z"
+>>>>>>> master
       },
       {
         "uniqueId": 1,
@@ -656,7 +668,11 @@
         "temperature": 25.33,
         "doorOpen": 1,
         "pressure": 84932,
+<<<<<<< HEAD
         "datetime": "2020-02-15T20:03:29.320Z"
+=======
+        "datetime": "2020-02-15T20:03:29.891Z"
+>>>>>>> master
       },
       {
         "uniqueId": 1,
@@ -665,7 +681,11 @@
         "temperature": 25.7,
         "doorOpen": 1,
         "pressure": 84933,
+<<<<<<< HEAD
         "datetime": "2020-02-15T20:03:35.338Z"
+=======
+        "datetime": "2020-02-15T20:03:35.906Z"
+>>>>>>> master
       },
       {
         "uniqueId": 1,
@@ -674,7 +694,11 @@
         "temperature": 25.49,
         "doorOpen": 1,
         "pressure": 84929,
+<<<<<<< HEAD
         "datetime": "2020-02-15T20:03:41.354Z"
+=======
+        "datetime": "2020-02-15T20:03:41.922Z"
+>>>>>>> master
       },
       {
         "uniqueId": 1,
@@ -683,7 +707,11 @@
         "temperature": 25.72,
         "doorOpen": 1,
         "pressure": 84923,
+<<<<<<< HEAD
         "datetime": "2020-02-15T20:03:47.375Z"
+=======
+        "datetime": "2020-02-15T20:03:47.943Z"
+>>>>>>> master
       },
       {
         "uniqueId": 1,
@@ -692,7 +720,11 @@
         "temperature": 25.57,
         "doorOpen": 1,
         "pressure": 84923,
+<<<<<<< HEAD
         "datetime": "2020-02-15T20:03:53.405Z"
+=======
+        "datetime": "2020-02-15T20:03:53.973Z"
+>>>>>>> master
       },
       {
         "uniqueId": 1,
@@ -701,7 +733,11 @@
         "temperature": 25.43,
         "doorOpen": 1,
         "pressure": 84913,
+<<<<<<< HEAD
         "datetime": "2020-02-15T20:03:59.407Z"
+=======
+        "datetime": "2020-02-15T20:03:59.976Z"
+>>>>>>> master
       },
       {
         "uniqueId": 1,
@@ -710,7 +746,11 @@
         "temperature": 25.53,
         "doorOpen": 1,
         "pressure": 84919,
+<<<<<<< HEAD
         "datetime": "2020-02-15T20:04:05.425Z"
+=======
+        "datetime": "2020-02-15T20:04:05.990Z"
+>>>>>>> master
       },
       {
         "uniqueId": 1,
@@ -719,7 +759,11 @@
         "temperature": 25.7,
         "doorOpen": 1,
         "pressure": 84917,
+<<<<<<< HEAD
         "datetime": "2020-02-15T20:04:11.437Z"
+=======
+        "datetime": "2020-02-15T20:04:12.006Z"
+>>>>>>> master
       },
       {
         "uniqueId": 1,
@@ -728,7 +772,11 @@
         "temperature": 25.41,
         "doorOpen": 1,
         "pressure": 84901,
+<<<<<<< HEAD
         "datetime": "2020-02-15T20:04:17.541Z"
+=======
+        "datetime": "2020-02-15T20:04:18.111Z"
+>>>>>>> master
       },
       {
         "uniqueId": 1,
@@ -737,7 +785,11 @@
         "temperature": 25.95,
         "doorOpen": 1,
         "pressure": 84913,
+<<<<<<< HEAD
         "datetime": "2020-02-15T20:04:23.559Z"
+=======
+        "datetime": "2020-02-15T20:04:24.128Z"
+>>>>>>> master
       },
       {
         "uniqueId": 1,
@@ -746,7 +798,11 @@
         "temperature": 25.74,
         "doorOpen": 1,
         "pressure": 84902,
+<<<<<<< HEAD
         "datetime": "2020-02-15T20:04:29.574Z"
+=======
+        "datetime": "2020-02-15T20:04:30.143Z"
+>>>>>>> master
       },
       {
         "uniqueId": 1,
@@ -755,7 +811,11 @@
         "temperature": 25.74,
         "doorOpen": 1,
         "pressure": 84896,
+<<<<<<< HEAD
         "datetime": "2020-02-15T20:04:35.590Z"
+=======
+        "datetime": "2020-02-15T20:04:36.158Z"
+>>>>>>> master
       },
       {
         "uniqueId": 1,
@@ -764,7 +824,11 @@
         "temperature": 25.74,
         "doorOpen": 1,
         "pressure": 84892,
+<<<<<<< HEAD
         "datetime": "2020-02-15T20:04:41.619Z"
+=======
+        "datetime": "2020-02-15T20:04:42.188Z"
+>>>>>>> master
       },
       {
         "uniqueId": 1,
@@ -773,7 +837,11 @@
         "temperature": 25.74,
         "doorOpen": 1,
         "pressure": 84886,
+<<<<<<< HEAD
         "datetime": "2020-02-15T20:04:47.627Z"
+=======
+        "datetime": "2020-02-15T20:04:48.199Z"
+>>>>>>> master
       },
       {
         "uniqueId": 1,
@@ -782,6 +850,7 @@
         "temperature": 26.03,
         "doorOpen": 1,
         "pressure": 84884,
+<<<<<<< HEAD
         "datetime": "2020-02-15T20:04:53.637Z"
       },
       {
@@ -1422,6 +1491,9 @@
         "doorOpen": 1,
         "pressure": 84800,
         "datetime": "2020-02-15T21:16:54"
+=======
+        "datetime": "2020-02-15T20:04:54.207Z"
+>>>>>>> master
       }
     ]
   ],
