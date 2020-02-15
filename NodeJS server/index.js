@@ -126,6 +126,26 @@ const getMostRecentForAllGreenhouses = function(){
     return newestgreenhouses;
 }
 
+const getAllCropNames = function(){
+    let cropNames = [];
+    db.plants.forEach(plant => {
+        cropNames.push(plant.name);  
+    });
+
+    return cropNames;
+}
+
+const getCropData = function(name){
+    let crop;
+    db.plants.forEach(plant => {
+        if(plant.name == name){
+            crop = plant
+        }
+    });
+
+    return crop;
+}
+
 const getHourlyGreenhouseData = function(uniqueId){
     let hourlygreenhouses;
 
@@ -194,13 +214,31 @@ const init = async function(){
     await mqttClientConnect();
     createServerResponse(`/`, `index.html`);
 
+  /////////////
+ //// API ////
+/////////////   
+    
+////DATA
     router.get(`/recent`, (req, res) => {
         return res.send(getMostRecentForAllGreenhouses());
       });
 
+
     router.get(`/graph/:uniqueId`, (req, res) => {
         return res.send(getHourlyGreenhouseData(req.params.uniqueId));
     });
+
+////CROPS DATA
+    router.get(`/crops`, (req, res) => {
+        return res.send(getAllCropNames());
+    });
+
+    router.get(`/crop/:cropName`, (req, res) => {
+        return res.send(getCropData(req.params.cropName));
+    });
+
+
+
 
 }
 
