@@ -66,14 +66,15 @@ async function getAllData(url = ``) {
 }
 
 let updateInfo = (clickedItem) => {
+    console.log(sensorData[clickedItem]);
     isDoorOpen = sensorData[clickedItem].doorOpen;
     curTemp = sensorData[clickedItem].temperature;
-    curPress = sensorData[clickedItem].pressure;
+    curPress = (sensorData[clickedItem].pressure/100000).toFixed(2);
     curHumid = sensorData[clickedItem].humidity;
 
-    if (isDoorOpen) {
+    if (isDoorOpen == 1) {
         openDoor()
-    } else if (isDoorOpen === false) {
+    } else if (isDoorOpen === 0) {
         closeDoor()
     } else {
         stupidDoor()

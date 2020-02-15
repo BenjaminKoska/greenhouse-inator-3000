@@ -42,7 +42,7 @@ const mqttClientConnect = async function(){
 
 const addDataToDB = function(data){
     let datetime = new Date();
-    data.datetime = datetime
+    data.datetime = datetime.toISOString();
     let currentgreenhouse = data;
 
     if(db.greenHouses.length > 0){
