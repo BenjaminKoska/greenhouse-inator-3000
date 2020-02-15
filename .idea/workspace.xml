@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a44e71f-ae5e-4df9-a439-c4234e55b75e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/NodeJS server/html/css/customStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NodeJS server/html/css/sb-admin-2.css" beforeDir="false" afterPath="$PROJECT_DIR$/NodeJS server/html/css/sb-admin-2.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NodeJS server/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/NodeJS server/html/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,7 +28,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="207" />
-          <entry key="HTML" value="629" />
+          <entry key="HTML" value="636" />
         </counts>
       </usages-collector>
     </session>
@@ -41,8 +38,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/NodeJS server/html/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="252" column="42" lean-forward="true" selection-start-line="252" selection-start-column="42" selection-end-line="252" selection-end-column="42" />
+            <state relative-caret-position="482">
+              <caret line="64" column="26" selection-start-line="64" selection-start-column="26" selection-end-line="64" selection-end-column="26" />
               <folding>
                 <element signature="e#28912#28918#0" expanded="true" />
               </folding>
@@ -266,7 +263,7 @@
       <path value="$PROJECT_DIR$/NodeJS server/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="width" value="977" />
     <option name="height" value="1038" />
@@ -345,12 +342,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1581770698767</updated>
-      <workItem from="1581770700050" duration="4782000" />
+      <workItem from="1581770700050" duration="4833000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4782000" />
+    <option name="totallyTimeSpent" value="4833000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -469,8 +466,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/NodeJS server/html/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="252" column="42" lean-forward="true" selection-start-line="252" selection-start-column="42" selection-end-line="252" selection-end-column="42" />
+        <state relative-caret-position="482">
+          <caret line="64" column="26" selection-start-line="64" selection-start-column="26" selection-end-line="64" selection-end-column="26" />
           <folding>
             <element signature="e#28912#28918#0" expanded="true" />
           </folding>
