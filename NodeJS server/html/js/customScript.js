@@ -16,7 +16,7 @@ let curPress = null;
 let curHumid = null;
 let curLight = null;
 
-let updateRealTime = function(){
+let updateRealTime = function() {
     isDoorOpen = currentData.doorOpen;
     curTemp = currentData.temperature;
     curPress = (currentData.pressure / 100000).toFixed(2);
@@ -126,15 +126,15 @@ let updateHumid = () => {
     }
 };
 
-let generateList = () => {
+let generateList = function() {
     let resultList = ``;
 
-    for (let i = 0; i < currentData.length; i++) {
+    for (let i = 0; i < allSensors.length; i++) {
         resultList = resultList + `
         <li class="nav-item">
             <a class="nav-link" href="#" onclick="updateInfo(${i})">
                 <i class="fas fa-fw fa-leaf"></i>
-                <span>${currentData[i].uniqueId} - Dashboard</span></a>
+                <span>${allSensors[i]} - Dashboard</span></a>
         </li>
         <hr class="sidebar-divider my-0">`
     }

@@ -9,13 +9,14 @@ socket.on(`realTimeData`, function(data) {
     console.log(`update this now: ${data}`);
     currentData = JSON.parse(data);
     updateRealTime();
-    
+
 })
 
 socket.on(`allSensors`, function(data) {
     //console.log(`less important: ${data}`);
     allSensors = JSON.parse(data);
     console.log(allSensors);
+    generateList();
 })
 
 
