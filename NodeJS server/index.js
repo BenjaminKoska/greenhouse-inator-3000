@@ -42,12 +42,20 @@ io.on(`connection`, function(socket) {
         handleClientMsg(msg);
     })
 
+    socket.on('chat', function(msg) {
+        handleChatMessage(msg);
+        sendInfoViaWS('chat', "Nee ga weg.");
+    })
+
 })
 
 http.listen(httpPort, function() {
     console.log(`listening on *:${httpPort}`)
 })
 
+const handleChatMessage = function(msg) {
+    mqttClient.publish(mqttTopic + "/chat", msg);
+}
 
 const handleClientMsg = function(msg) {
     console.log(msg);
@@ -56,8 +64,6 @@ const handleClientMsg = function(msg) {
 const sendInfoViaWS = function(infoType, info) {
     io.emit(infoType, info);
 }
-
-
 
 //// FILE DB ////
 const addDataToDB = function(data) {

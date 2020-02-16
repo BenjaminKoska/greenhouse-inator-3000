@@ -142,3 +142,25 @@ let generateList = function() {
     sensorSidebar.innerHTML = resultList;
 
 }
+
+const sendMessage = function() {
+    let message = document.querySelector('.message').value;
+    if (message) {
+        socket.emit('chat', message);
+        document.querySelector('.message').value = "";
+        document.querySelector('.chat').innerHTML += `<li>You: ${message}</li>`;
+    }
+
+}
+
+const addServerMessage = function(message) {
+    document.querySelector('.chat').innerHTML += `<li>Server: ${message}</li>`;
+}
+
+function openForm() {
+    document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+}

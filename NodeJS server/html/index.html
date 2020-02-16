@@ -214,9 +214,28 @@
 
         </div>
         <!-- End of Content Wrapper -->
+        <button class="open-button" onclick="openForm()">Chat</button>
+
+        <div class="chat-popup" id="myForm">
+            <div action="/" class="form-container">
+                <h1>Chat</h1>
+                <div>
+                    <ul class="chat">
+
+                    </ul>
+                </div>
+
+                <label for="msg"><b>Message</b></label>
+                <input type="text" class="message" placeholder="Type message.." name="msg">
+
+                <button type="submit" class="btn" onclick="sendMessage()">Send</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </div>
+        </div>
 
     </div>
     <!-- End of Page Wrapper -->
+
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">

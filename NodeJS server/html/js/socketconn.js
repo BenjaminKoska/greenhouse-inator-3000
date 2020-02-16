@@ -28,3 +28,7 @@ socket.on(`statistics`, function(data) {
     //console.log(`statistics: ${data}`);
     statistics = JSON.parse(data);
 })
+
+socket.on(`chat`, function(data) {
+    addServerMessage(data);
+})
