@@ -6,6 +6,7 @@
 #include <iot_fbm320.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+#include <Adafruit_MPU6050.h>
 
 
 #define I2C_SDA_PIN         25
@@ -32,6 +33,8 @@
 const int pushButton = 0;
 const int id = 1;
 
+int ms_counter = 0;
+
 long int C11;
 long int C12;
 long int C0,C1,C2,C3,C5,C6,C8,C9,C10;
@@ -46,6 +49,35 @@ WiFiClient wifiClient;
 PubSubClient mqttClient(wifiClient);
 BH1750FVI lightSensor(13, BH1750FVI::k_DevAddress_L, BH1750FVI::k_DevModeContHighRes);
 Sodaq_HTS221 humiditySensor;
+Adafruit_MPU6050 mpu;
+
+
+/* Gyroscope data struct */
+struct sensor_data {
+  float acceleration_x;
+  float acceleration_y;
+  float acceleration_z;
+  
+  float gyro_x;
+  float gyro_y;
+  float gyro_z;
+
+  float temperature;
+};
+
+void initMPU() {
+  if (!mpu.begin()) {
+    Serial.println("Failed to find MPU6050 chip");
+    while (1) {
+      delay(10);
+    }
+  }
+  Serial.println("MPU6050 Found!");
+
+  mpu.setAccelerometerRange(MPU6050_RANGE_8_G);
+
+  
+}
 
 /**
  * Connect to the WiFi
@@ -93,6 +125,28 @@ void setup(){
     setup_sensors();
 }
 
+/*
+ * Collects the sensor data in a struct
+ * 
+ * @returns {sensor_data} A new struct containing all the sensor data info
+ */
+sensor_data getSensorData() {
+  sensors_event_t a, g, temp;
+  mpu.getEvent(&a, &g, &temp);
+
+  return sensor_data {
+    a.acceleration.x,
+    a.acceleration.y,
+    a.acceleration.z,
+
+    g.gyro.y,
+    g.gyro.x,
+    g.gyro.z,
+
+    temp.temperature
+  };
+};
+
 void setup_sensors(){
   if(!humiditySensor.init()) {
     Serial.println("Could not initialize HTS221 sensor");  
@@ -106,58 +160,74 @@ void setup_sensors(){
   Serial.println("BH1750FVI sensor initialized");
 
   fbm320Calibration();
+
+  setup_display();
+
+  initMPU();
 }
 
 /**
  * Main application which runs in infinite loop.
  */
 void loop() {
-  char buff[128] = { 0 };
   
-  int32_t ut;
-  int32_t DT1;
-  long int up;
-  
-  float temp = humiditySensor.readTemperature();
-  float humidity = humiditySensor.readHumidity();
-  uint16_t lux = lightSensor.GetLightIntensity();
-  int stateButton = digitalRead(pushButton);
-  int buttonPressed;
-
-  uint32_t pressure = fbm320GetPressure(fbm320ReadUP());
-  
-  if(stateButton == 1) {
-     buttonPressed = 1;
-  } else {
-    buttonPressed = 0;
-  }
-
-
-  snprintf(buff, 128, "{\"uniqueId\":%d,\"light\":%d,\"humidity\":%0.2f,\"temperature\":%0.2f,\"doorOpen\":%d,\"pressure\":%d}",id,lux,humidity,temp,buttonPressed, pressure);
-  
-  Serial.println(buff);
-  
-  mqttClient.publish(MQTT_TOPIC_PREFIX "/API",buff);
 
   /* Check MQTT connection */
   if(!mqttClient.connected()) {
     Serial.print("Reconnecting to MQTT server\n");
     if(mqttClient.connect(MQTT_CLIENT_ID)) {
       Serial.println("MQTT connected\n");
-      mqttClient.publish(MQTT_TOPIC_PREFIX "/API",buff);
- 
     } else {
       Serial.print("MQTT connection failed, rc=");
       Serial.print(mqttClient.state());
-      Serial.println(" try again in 5 seconds");
-      
+      Serial.println("try again in 5 seconds");
     }
     
   }
-  delay(6000);
-  //delay(900000);
+  /*
+  sensor_data sensorData = getSensorData();
+  Serial.print("\n accel X: ");
+  Serial.print(sensorData.acceleration_x);
+  Serial.print(", Y: ");
+  Serial.print(sensorData.acceleration_y);
+  Serial.print(", Z: ");
+  Serial.print(sensorData.acceleration_z);*/
+  
   /* Process incoming MQTT messages */
   mqttClient.loop();
+  
+  if(ms_counter >= 3000) {
+    ms_counter = 0;
+    
+    char buff[128] = { 0 };
+  
+    int32_t ut;
+    int32_t DT1;
+    long int up;
+  
+    float temp = humiditySensor.readTemperature();
+    float humidity = humiditySensor.readHumidity();
+    uint16_t lux = lightSensor.GetLightIntensity();
+    int stateButton = digitalRead(pushButton);
+    int buttonPressed;
+
+    uint32_t pressure = fbm320GetPressure(fbm320ReadUP());
+  
+    if(stateButton == 1) {
+      buttonPressed = 1;
+    } else {
+      buttonPressed = 0;
+    }
+
+
+    snprintf(buff, 128, "{\"uniqueId\":%d,\"light\":%d,\"humidity\":%0.2f,\"temperature\":%0.2f,\"doorOpen\":%d,\"pressure\":%d}",id,lux,humidity,temp,buttonPressed, pressure);
+  
+    Serial.println(buff);
+  
+    mqttClient.publish(MQTT_TOPIC_PREFIX "/API",buff);
+  }
+  ms_counter += 1;
+  delay(1);
 
 }
 
@@ -167,8 +237,8 @@ void display_set_header()
   display.setTextSize(1);
   display.setTextColor(SSD1306_WHITE);
   display.setCursor(0,0);
-  display.println("BlueCherry Hackathon");
-  display.drawLine(0,8, 128, 8, SSD1306_WHITE);
+  display.println("Doofenschmirtz Inc");
+  display.drawLine(0,8, 110, 8, SSD1306_WHITE);
 }
 
 /**

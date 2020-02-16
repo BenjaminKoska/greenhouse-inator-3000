@@ -14,63 +14,11 @@ let curTemp = null;
 let curPress = null;
 let curHumid = null;
 
-let sensorData = [
-    {
-        "uniqueId": "mock 1",
-        "light": 5000,
-        "humidity": 30,
-        "temperature": null,
-        "doorOpen": false,
-        "pressure": 160,
-    },
-    {
-        "uniqueId": "mock 2",
-        "light": 10000,
-        "humidity": 40,
-        "temperature": 40,
-        "doorOpen": true,
-        "pressure": 160,
-    },
-    {
-        "uniqueId": "mock 69",
-        "light": 69000,
-        "humidity": 50,
-        "temperature": 32,
-        "doorOpen": null,
-        "pressure": 160,
-    },
-    {
-        "uniqueId": "mock 420",
-        "light": null,
-        "humidity": null,
-        "temperature": null,
-        "doorOpen": null,
-        "pressure": null,
-    },
-];
-
-async function init() {
-    console.log("custom script loaded");
-    sensorData = await getAllData(recentInfoUrl); //TODO remove commenting if you want to call to the db
-
-    generateList();
-    updateInfo(0); //open page with current page displaying info of sensor 1
-}
-
-async function getAllData(url = ``) {
-    const response = await fetch(url, {
-        method: `GET`,
-        mode: `cors`
-    });
-    return await response.json()
-}
-
-let updateInfo = (clickedItem) => {
-    console.log(sensorData[clickedItem]);
-    isDoorOpen = sensorData[clickedItem].doorOpen;
-    curTemp = sensorData[clickedItem].temperature;
-    curPress = (sensorData[clickedItem].pressure/100000).toFixed(2);
-    curHumid = sensorData[clickedItem].humidity;
+let updateRealTime = () => {
+    isDoorOpen = currentData.doorOpen;
+    curTemp = currentData.temperature;
+    curPress = (currentData.pressure / 100000).toFixed(2);
+    curHumid = currentData.humidity;
 
     if (isDoorOpen == 1) {
         openDoor()
@@ -82,7 +30,7 @@ let updateInfo = (clickedItem) => {
     updateTemp();
     updatePress();
     updateHumid();
-}; //get basic data from backend and update in frontend
+};
 
 let openDoor = () => {
     doorStatusCard.classList.remove('fa-door-closed');
@@ -104,7 +52,7 @@ let openDoor = () => {
                                 </div>
                             </div>
                         </div>`;
-};  //show door that is opened
+}; //show door that is opened
 
 let closeDoor = () => {
     doorStatusCard.classList.remove('fa-door-open');
@@ -179,12 +127,12 @@ let updateHumid = () => {
 let generateList = () => {
     let resultList = ``;
 
-    for (let i = 0; i < sensorData.length; i++) {
+    for (let i = 0; i < currentData.length; i++) {
         resultList = resultList + `
         <li class="nav-item">
             <a class="nav-link" href="#" onclick="updateInfo(${i})">
                 <i class="fas fa-fw fa-leaf"></i>
-                <span>${sensorData[i].uniqueId} - Dashboard</span></a>
+                <span>${currentData[i].uniqueId} - Dashboard</span></a>
         </li>
         <hr class="sidebar-divider my-0">`
     }
@@ -192,4 +140,4 @@ let generateList = () => {
     sensorSidebar.innerHTML = resultList;
 }; //generate the list of sensors
 
-document.addEventListener('DOMContentLoaded', init);
+//document.addEventListener('DOMContentLoaded', init);
