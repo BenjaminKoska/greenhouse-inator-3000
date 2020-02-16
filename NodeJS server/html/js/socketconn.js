@@ -29,6 +29,7 @@ socket.on(`statistics`, function(data) {
     statistics = JSON.parse(data);
     console.log(statistics)
     loadTempGraph();
+    loadHumGraph();
     loadSunLightGraph();
 })
 
