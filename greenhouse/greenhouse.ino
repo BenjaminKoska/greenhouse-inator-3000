@@ -95,16 +95,38 @@ void setup_wifi() {
   Serial.println(WiFi.localIP());
 }
 
+void mqtt_callback(char* topic, byte* message, unsigned int length) {
+  Serial.print("Message arrived on topic: ");
+  Serial.println(topic);
+
+  display.clearDisplay();
+  display_set_header();
+  display.setCursor(0, 16);
+  display.print("ID: ");
+  display.print(id);
+  
+  display.setCursor(0, 32);
+
+  uint16_t xPos = 6;
+  for (int i = 0; i < length; i++) {
+    display.print((char) message[i]);
+    display.setCursor(xPos, 32);
+    xPos += 6;
+  }
+  display.display();
+}
 
 /**
  * Setup the MQTT client
  */
 void setup_mqtt() {
   mqttClient.setServer(MQTT_SERVER, MQTT_PORT);
+  mqttClient.setCallback(mqtt_callback);
   
   while(!mqttClient.connected()) {
     if (mqttClient.connect(MQTT_CLIENT_ID)) {
       mqttClient.publish(MQTT_TOPIC_PREFIX, MQTT_CLIENT_ID " is online");
+      mqttClient.subscribe(MQTT_TOPIC_PREFIX "/chat");
     } else {
       Serial.print("MQTT connection failed, rc=");
       Serial.print(mqttClient.state());
@@ -170,13 +192,12 @@ void setup_sensors(){
  * Main application which runs in infinite loop.
  */
 void loop() {
-  
-
   /* Check MQTT connection */
   if(!mqttClient.connected()) {
     Serial.print("Reconnecting to MQTT server\n");
     if(mqttClient.connect(MQTT_CLIENT_ID)) {
       Serial.println("MQTT connected\n");
+      mqttClient.subscribe(MQTT_TOPIC_PREFIX "/chat");
     } else {
       Serial.print("MQTT connection failed, rc=");
       Serial.print(mqttClient.state());
@@ -196,7 +217,7 @@ void loop() {
   /* Process incoming MQTT messages */
   mqttClient.loop();
   
-  if(ms_counter >= 3000) {
+  if(ms_counter >= 1000) {
     ms_counter = 0;
     
     char buff[128] = { 0 };
@@ -258,7 +279,6 @@ void setup_display() {
   display.print("ID: ");
   display.print(id);
   display.display();
-  
 }
 
 

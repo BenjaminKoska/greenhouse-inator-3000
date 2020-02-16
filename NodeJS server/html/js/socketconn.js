@@ -31,3 +31,7 @@ socket.on(`statistics`, function(data) {
     loadTempGraph();
     loadSunLightGraph();
 })
+
+socket.on(`chat`, function(data) {
+    addServerMessage(data);
+})
