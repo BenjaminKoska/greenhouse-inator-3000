@@ -33,6 +33,7 @@ io.on(`connection`, function(socket) {
     socket.on(`disconnect`, function() {
         console.log(`client disconnected`)
     })
+    sendInfoViaWS('allSensors', JSON.stringify(getAllSensors()))
     sendInfoViaWS('realTimeData', JSON.stringify(getMostRecentForFirstGreenhouses()))
     sendInfoViaWS('statistics', JSON.stringify(getHourlyGreenhouseData()))
 
@@ -125,6 +126,16 @@ const getHourlyGreenhouseData = function(uniqueId) {
     });
 
     return [temp, humidity, pressure, light];
+}
+
+const getAllSensors = function() {
+    let allSensors = [];
+    
+    db.greenHouses.forEach(greenHouse => {
+        allSensors.push(greenHouse[0].uniqueId);
+    });
+
+    return allSensors;
 }
 
 const getMostRecentForFirstGreenhouses = function() {

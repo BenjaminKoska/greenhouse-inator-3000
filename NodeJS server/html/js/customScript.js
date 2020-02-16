@@ -17,7 +17,7 @@ let curPress = null;
 let curHumid = null;
 let curLight = null;
 
-let updateRealTime = () => {
+let updateRealTime = function(){
     isDoorOpen = currentData.doorOpen;
     curTemp = currentData.temperature;
     curPress = (currentData.pressure / 100000).toFixed(2);

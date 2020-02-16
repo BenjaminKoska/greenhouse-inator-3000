@@ -8,6 +8,7 @@ socket.on(`realTimeData`, function(data) {
     console.log(`update this now: ${data}`);
     currentData = JSON.parse(data);
     updateRealTime();
+    
 })
 
 socket.on(`cropInfo`, function(data) {
