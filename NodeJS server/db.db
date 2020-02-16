@@ -22365,6 +22365,231 @@
         "doorOpen": 1,
         "pressure": 84163,
         "datetime": "2020-02-16T03:05:41"
+      },
+      {
+        "uniqueId": 1,
+        "light": 3,
+        "humidity": 54.46,
+        "temperature": 27.41,
+        "doorOpen": 1,
+        "pressure": 84148,
+        "datetime": "2020-02-16T03:05:44"
+      },
+      {
+        "uniqueId": 1,
+        "light": 2,
+        "humidity": 52.85,
+        "temperature": 27.72,
+        "doorOpen": 1,
+        "pressure": 84134,
+        "datetime": "2020-02-16T03:05:47"
+      },
+      {
+        "uniqueId": 1,
+        "light": 2,
+        "humidity": 50.63,
+        "temperature": 27.34,
+        "doorOpen": 1,
+        "pressure": 84123,
+        "datetime": "2020-02-16T03:05:50"
+      },
+      {
+        "uniqueId": 1,
+        "light": 1,
+        "humidity": 48.97,
+        "temperature": 28.01,
+        "doorOpen": 1,
+        "pressure": 84118,
+        "datetime": "2020-02-16T03:05:53"
+      },
+      {
+        "uniqueId": 1,
+        "light": 3,
+        "humidity": 54.66,
+        "temperature": 28.11,
+        "doorOpen": 1,
+        "pressure": 84114,
+        "datetime": "2020-02-16T03:05:56"
+      },
+      {
+        "uniqueId": 1,
+        "light": 3,
+        "humidity": 53.16,
+        "temperature": 27.99,
+        "doorOpen": 1,
+        "pressure": 84100,
+        "datetime": "2020-02-16T03:05:59"
+      },
+      {
+        "uniqueId": 1,
+        "light": 1,
+        "humidity": 54.54,
+        "temperature": 28.03,
+        "doorOpen": 1,
+        "pressure": 84095,
+        "datetime": "2020-02-16T03:06:02"
+      },
+      {
+        "uniqueId": 1,
+        "light": 4,
+        "humidity": 51.62,
+        "temperature": 27.99,
+        "doorOpen": 1,
+        "pressure": 84092,
+        "datetime": "2020-02-16T03:06:05"
+      },
+      {
+        "uniqueId": 1,
+        "light": 3,
+        "humidity": 54.03,
+        "temperature": 28.22,
+        "doorOpen": 1,
+        "pressure": 84090,
+        "datetime": "2020-02-16T03:06:08"
+      },
+      {
+        "uniqueId": 1,
+        "light": 4,
+        "humidity": 46.06,
+        "temperature": 28.24,
+        "doorOpen": 1,
+        "pressure": 84082,
+        "datetime": "2020-02-16T03:06:11"
+      },
+      {
+        "uniqueId": 1,
+        "light": 0,
+        "humidity": 44.43,
+        "temperature": 28.18,
+        "doorOpen": 1,
+        "pressure": 84084,
+        "datetime": "2020-02-16T03:06:14"
+      },
+      {
+        "uniqueId": 1,
+        "light": 0,
+        "humidity": 51.22,
+        "temperature": 28.18,
+        "doorOpen": 1,
+        "pressure": 84079,
+        "datetime": "2020-02-16T03:06:17"
+      },
+      {
+        "uniqueId": 1,
+        "light": 1,
+        "humidity": 43.42,
+        "temperature": 27.97,
+        "doorOpen": 1,
+        "pressure": 84074,
+        "datetime": "2020-02-16T03:06:20"
+      },
+      {
+        "uniqueId": 1,
+        "light": 1,
+        "humidity": 50.56,
+        "temperature": 28.36,
+        "doorOpen": 1,
+        "pressure": 84067,
+        "datetime": "2020-02-16T03:06:23"
+      },
+      {
+        "uniqueId": 1,
+        "light": 0,
+        "humidity": 46.88,
+        "temperature": 28.36,
+        "doorOpen": 1,
+        "pressure": 84062,
+        "datetime": "2020-02-16T03:06:26"
+      },
+      {
+        "uniqueId": 1,
+        "light": 0,
+        "humidity": 40.78,
+        "temperature": 28.11,
+        "doorOpen": 1,
+        "pressure": 84055,
+        "datetime": "2020-02-16T03:06:29"
+      },
+      {
+        "uniqueId": 1,
+        "light": 0,
+        "humidity": 51.09,
+        "temperature": 28.09,
+        "doorOpen": 1,
+        "pressure": 84054,
+        "datetime": "2020-02-16T03:06:32"
+      },
+      {
+        "uniqueId": 1,
+        "light": 0,
+        "humidity": 41.5,
+        "temperature": 28.45,
+        "doorOpen": 1,
+        "pressure": 84043,
+        "datetime": "2020-02-16T03:06:35"
+      },
+      {
+        "uniqueId": 1,
+        "light": 4,
+        "humidity": 49.04,
+        "temperature": 28.57,
+        "doorOpen": 1,
+        "pressure": 84038,
+        "datetime": "2020-02-16T03:06:38"
+      },
+      {
+        "uniqueId": 1,
+        "light": 4,
+        "humidity": 48.22,
+        "temperature": 28.22,
+        "doorOpen": 1,
+        "pressure": 84049,
+        "datetime": "2020-02-16T03:06:41"
+      },
+      {
+        "uniqueId": 1,
+        "light": 4,
+        "humidity": 49.09,
+        "temperature": 27.95,
+        "doorOpen": 1,
+        "pressure": 84051,
+        "datetime": "2020-02-16T03:06:44"
+      },
+      {
+        "uniqueId": 1,
+        "light": 0,
+        "humidity": 47.83,
+        "temperature": 27.84,
+        "doorOpen": 1,
+        "pressure": 84046,
+        "datetime": "2020-02-16T03:06:47"
+      },
+      {
+        "uniqueId": 1,
+        "light": 0,
+        "humidity": 50.81,
+        "temperature": 28.24,
+        "doorOpen": 1,
+        "pressure": 84049,
+        "datetime": "2020-02-16T03:06:50"
+      },
+      {
+        "uniqueId": 1,
+        "light": 0,
+        "humidity": 48.79,
+        "temperature": 28.34,
+        "doorOpen": 1,
+        "pressure": 84034,
+        "datetime": "2020-02-16T03:06:53"
+      },
+      {
+        "uniqueId": 1,
+        "light": 0,
+        "humidity": 48.8,
+        "temperature": 28.42,
+        "doorOpen": 1,
+        "pressure": 84030,
+        "datetime": "2020-02-16T03:06:56"
       }
     ]
   ],
