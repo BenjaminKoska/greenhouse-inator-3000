@@ -1,52 +1,70 @@
 const express = require(`express`);
+const app = express();
+const http = require(`http`).createServer(app);
+const io = require(`socket.io`)(http);
 const mqtt = require(`mqtt`);
-let fs = require('fs');
+const fs = require('fs');
 
+let db;
 
-  //////////////
- //// VARS ////
-//////////////
-const webServerPort = 80;
+let httpPort = 80
 const mqttUrl = `mqtt://broker.hivemq.com`
 const mqttPort = `1883`
 const mqttTopic = `/DeCodeBadgers`
 
 const mqttClient = mqtt.connect(`${mqttUrl}:${mqttPort}`)
-const server = express();
-const router = express.Router();
 
-  /////////////////////
- //// MQTT CLIENT ////
-/////////////////////
-const mqttClientConnect = async function(){
-    mqttClient.on('connect', function(){
-        mqttClient.subscribe(`${mqttTopic}/#`, function(e){
-            if(e){
-                console.log(e.message);
-                reject();
-            } else {
-                mqttClient.publish(mqttTopic, `API has made connection`);
-                console.log(`MQTT connection made to ${mqttUrl} on Topic: ${mqttTopic}`)
-                mqttClient.on('message', function(topic, message){
-                    if(topic == `/DeCodeBadgers/API`){
-                        let data = JSON.parse(message.toString());
-                        addDataToDB(data);
-                    } else {
-                        console.log(topic, message.toString());
-                    }
-                })
-            }
-        })
+
+//// WEBSERVER ////
+//// WEBSOCKET //// 
+app.get(`/`, function(req, res) {
+    res.sendFile(`${__dirname}/html/index.html`)
+})
+
+// app.get(`/socket.js`, function(req, res){
+//     res.sendFile(`${__dirname}/socket.io.js`)
+// })
+
+app.use(express.static('html'))
+
+
+io.on(`connection`, function(socket) {
+    console.log(`client connected`)
+    socket.on(`disconnect`, function() {
+        console.log(`client disconnected`)
     })
+    sendInfoViaWS('realTimeData', JSON.stringify(getMostRecentForFirstGreenhouses()))
+    sendInfoViaWS('statistics', JSON.stringify(getHourlyGreenhouseData()))
+
+    socket.on('msg', function(msg) {
+        handleClientMsg(msg);
+    })
+
+})
+
+http.listen(httpPort, function() {
+    console.log(`listening on *:${httpPort}`)
+})
+
+
+const handleClientMsg = function(msg) {
+    console.log(msg);
 }
 
-const addDataToDB = function(data){
+const sendInfoViaWS = function(infoType, info) {
+    io.emit(infoType, info);
+}
+
+
+
+//// FILE DB ////
+const addDataToDB = function(data) {
     data.datetime = returnCurrentTime();
     let currentgreenhouse = data;
 
-    if(db.greenHouses.length > 0){
+    if (db.greenHouses.length > 0) {
         let checkToAdd = checkDb(currentgreenhouse);
-        if(checkToAdd){
+        if (checkToAdd) {
             db.greenHouses.push([currentgreenhouse]);
         }
     } else {
@@ -56,139 +74,131 @@ const addDataToDB = function(data){
     updateDB();
 }
 
-const returnCurrentTime = function(){
-    let dt = new Date(),
-	current_date = dt.getDate(),
-	current_month = dt.getMonth() + 1,
-	current_year = dt.getFullYear(),
-	current_hrs = dt.getHours(),
-	current_mins = dt.getMinutes(),
-	current_secs = dt.getSeconds(),
-	current_datetime;
-
-// Add 0 before date, month, hrs, mins or secs if they are less than 0
-current_date = current_date < 10 ? '0' + current_date : current_date;
-current_month = current_month < 10 ? '0' + current_month : current_month;
-current_hrs = current_hrs < 10 ? '0' + current_hrs : current_hrs;
-current_mins = current_mins < 10 ? '0' + current_mins : current_mins;
-current_secs = current_secs < 10 ? '0' + current_secs : current_secs;
-
-// Current datetime
-// String such as 2016-07-16T19:20:30
-current_datetime = current_year + '-' + current_month + '-' + current_date + 'T' + current_hrs + ':' + current_mins + ':' + current_secs;
-
-return current_datetime;
-}
-
-const checkDb = function(currentgreenhouse){
+const checkDb = function(currentgreenhouse) {
     let foundmatch = false;
     db.greenHouses.forEach(greenhouse => {
-        if(greenhouse[0].uniqueId === currentgreenhouse.uniqueId){
+        if (greenhouse[0].uniqueId === currentgreenhouse.uniqueId) {
             greenhouse.push(currentgreenhouse);
             foundmatch = true;
         }
     });
-    if(foundmatch){
+    if (foundmatch) {
         return false;
     } else {
         return true;
     }
 }
-    
-  ///////////////////
- //// WEBSERVER ////
-///////////////////
-const createServerResponse = function(link, file){
-    router.get(link, function(request, response){
-        response.sendFile(`${__dirname}/html/${file}`)
-    })
-}
 
 
-  //////////////////
- //// DATABASE ////
-//////////////////
-const readInDB = async function(file){
+const readInDB = async function(file) {
     return JSON.parse(await readFile(file));
 }
 
-const updateDB = async function(){
+const updateDB = async function() {
     await writeToFile(`${__dirname}/db.db`, JSON.stringify(db, null, 2));
     db = await readInDB(`${__dirname}/db.db`);
 }
 
-const getMostRecentForAllGreenhouses = function(){
-    let newestgreenhouses = [];
-    db.greenHouses.forEach(greenHouse => {
-        newestgreenhouses.push(greenHouse[greenHouse.length-1]);  
-    });
-
-    return newestgreenhouses;
-}
-
-const getAllCropNames = function(){
-    let cropNames = [];
-    db.plants.forEach(plant => {
-        cropNames.push(plant.name);  
-    });
-
-    return cropNames;
-}
-
-const getCropData = function(name){
-    let crop;
-    db.plants.forEach(plant => {
-        if(plant.name == name){
-            crop = plant
-        }
-    });
-
-    return crop;
-}
-
-const getHourlyGreenhouseData = function(uniqueId){
+const getHourlyGreenhouseData = function(uniqueId) {
     let hourlygreenhouses;
 
-    let temp = [];
-    let humidity = [];
-    let pressure = [];
-    let light = [];
-    db.greenHouses.forEach(greenHouse => {
-        if(greenHouse[0].uniqueId == uniqueId){
-            hourlygreenhouses = greenHouse.slice(-24);  
-        }
-    });
+    let temp = { temperature: [] };
+    let humidity = { humidity: [] };
+    let pressure = { pressure: [] };
+    let light = { light: [] };
+
+    if (uniqueId != null) {
+        db.greenHouses.forEach(greenHouse => {
+            if (greenHouse[0].uniqueId == uniqueId) {
+                hourlygreenhouses = greenHouse.slice(-24);
+            }
+        });
+    } else {
+        hourlygreenhouses = db.greenHouses[0].slice(-24);
+    }
 
     hourlygreenhouses.forEach(hourlygreenhouse => {
-        temp.push(hourlygreenhouse.temperature);
-        humidity.push(hourlygreenhouse.humidity);
-        pressure.push(hourlygreenhouse.pressure);
-        light.push(hourlygreenhouse.light);
+        temp.temperature.push(hourlygreenhouse.temperature);
+        humidity.humidity.push(hourlygreenhouse.humidity);
+        pressure.pressure.push(hourlygreenhouse.pressure);
+        light.light.push(hourlygreenhouse.light);
     });
 
     return [temp, humidity, pressure, light];
 }
 
+const getMostRecentForFirstGreenhouses = function() {
+    let firstgreenhouse = db.greenHouses[0];
+    return firstgreenhouse[firstgreenhouse.length - 1];
+}
 
-  /////////////////
- //// HELPERS ////
-/////////////////
-const readFile = function(path){
-    return new Promise(function(resolve, reject){
+//// MQTT CLIENT ////
+const mqttClientConnect = async function() {
+    mqttClient.on('connect', function() {
+        mqttClient.subscribe(`${mqttTopic}/#`, function(e) {
+            if (e) {
+                console.log(e.message);
+                reject();
+            } else {
+                mqttClient.publish(mqttTopic, `API Server has made connection`);
+                console.log(`MQTT connection made to ${mqttUrl} on Topic: ${mqttTopic}`)
+                mqttClient.on('message', function(topic, message) {
+                    if (topic == `/DeCodeBadgers/API`) {
+                        let data = message.toString();
+                        sendInfoViaWS(`realTimeData`, data);
+                        addDataToDB(JSON.parse(data));
+                    } else {
+                        console.log(topic, message.toString());
+                    }
+                })
+            }
+        })
+    })
+}
+
+
+//// HELPERS ////
+const returnCurrentTime = function() {
+    let dt = new Date(),
+        current_date = dt.getDate(),
+        current_month = dt.getMonth() + 1,
+        current_year = dt.getFullYear(),
+        current_hrs = dt.getHours(),
+        current_mins = dt.getMinutes(),
+        current_secs = dt.getSeconds(),
+        current_datetime;
+
+    // Add 0 before date, month, hrs, mins or secs if they are less than 0
+    current_date = current_date < 10 ? '0' + current_date : current_date;
+    current_month = current_month < 10 ? '0' + current_month : current_month;
+    current_hrs = current_hrs < 10 ? '0' + current_hrs : current_hrs;
+    current_mins = current_mins < 10 ? '0' + current_mins : current_mins;
+    current_secs = current_secs < 10 ? '0' + current_secs : current_secs;
+
+    // Current datetime
+    // String such as 2016-07-16T19:20:30
+    current_datetime = current_year + '-' + current_month + '-' + current_date + 'T' + current_hrs + ':' + current_mins + ':' + current_secs;
+
+    return current_datetime;
+}
+
+
+const readFile = function(path) {
+    return new Promise(function(resolve, reject) {
         try {
             let data = fs.readFileSync(path);
             resolve(data);
-        } catch(e) {
+        } catch (e) {
             console.log(e.message, 2);
             reject();
         }
     })
 }
 
-const writeToFile = function(filename, data){
-    return new Promise(function(resolve, reject){
-        fs.writeFile(filename, data, function (e){
-            if(e){
+const writeToFile = function(filename, data) {
+    return new Promise(function(resolve, reject) {
+        fs.writeFile(filename, data, function(e) {
+            if (e) {
                 console.log(e.message, 2);
                 reject();
             } else {
@@ -199,48 +209,13 @@ const writeToFile = function(filename, data){
 }
 
 
-  //////////////
- //// INIT ////
-//////////////
-const init = async function(){
+
+
+//// INIT ////
+
+const init = async function() {
     db = await readInDB(`${__dirname}/db.db`);
-    server.use('/', router);
-    server.use(express.static('html'))
-
-    server.listen(webServerPort, function(){
-        console.log(`Webserver is listening on port: ${webServerPort}`);
-    })
-
     await mqttClientConnect();
-    createServerResponse(`/`, `index.html`);
-
-  /////////////
- //// API ////
-/////////////   
-    
-////DATA
-    router.get(`/recent`, (req, res) => {
-        return res.send(getMostRecentForAllGreenhouses());
-      });
-
-
-    router.get(`/graph/:uniqueId`, (req, res) => {
-        return res.send(getHourlyGreenhouseData(req.params.uniqueId));
-    });
-
-////CROPS DATA
-    router.get(`/crops`, (req, res) => {
-        return res.send(getAllCropNames());
-    });
-
-    router.get(`/crop/:cropName`, (req, res) => {
-        return res.send(getCropData(req.params.cropName));
-    });
-
-
-
-
 }
-
 
 init();
