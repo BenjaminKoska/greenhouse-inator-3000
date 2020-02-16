@@ -28,11 +28,13 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 }
 
 // Area Chart Example
+const loadSunLightGraph = async function(){
+await sleep(300);
 var ctx = document.getElementById("SunlightChart");
 var myLineChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: ["00:00", "01:00", "02:00","03:00","04:00", "05:00", "06:00","07:00","08:00", "09:00", "10:00","11:00","12:00", "13:00", "14:00","15:00","16:00", "17:00", "18:00","19:00","20:00", "21:00", "22:00","23:00",],
+        labels: ["00:00", "01:00", "02:00","03:00","04:00", "05:00", "06:00","07:00","08:00", "09:00", "10:00","11:00"],
         datasets: [{
             fill: false,
             label: "Intensity",
@@ -47,10 +49,10 @@ var myLineChart = new Chart(ctx, {
             pointHoverBorderColor: "rgba(255, 193, 7, 1)",
             pointHitRadius: 10,
             pointBorderWidth: 2,
-            data: [0, 1000, 2000, 2500, 4000, 1000, 1000, 2000, 3000, 4000,3000, 1000, 2000, 3000, 4000, 5000, 5000, 4000, 1500, 0,0],
+            data: statistics[3].light,
         },
             {
-                label: "Intensity",
+                label: "Optimal Intensity",
                 lineTension: 0,
                 backgroundColor: "rgba(255, 0, 0, 0.05)",
                 borderColor: "rgba(255, 0, 0, 1)",
@@ -62,7 +64,7 @@ var myLineChart = new Chart(ctx, {
                 pointHoverBorderColor: "rgba(255, 0, 0, 1)",
                 pointHitRadius: 10,
                 pointBorderWidth: 2,
-                data: [3000,3000,3000,3000,3000,3000,3000,3000,3000,3000,3000,3000,3000,3000,3000,3000,3000,3000,3000,3000,3000,3000,3000,],
+                data: [cropInfo.optimalLight,cropInfo.optimalLight,cropInfo.optimalLight,cropInfo.optimalLight,cropInfo.optimalLight,cropInfo.optimalLight,cropInfo.optimalLight,cropInfo.optimalLight,cropInfo.optimalLight,cropInfo.optimalLight,cropInfo.optimalLight,cropInfo.optimalLight,cropInfo.optimalLight,cropInfo.optimalLight,cropInfo.optimalLight,cropInfo.optimalLight,cropInfo.optimalLight,cropInfo.optimalLight,cropInfo.optimalLight,cropInfo.optimalLight,cropInfo.optimalLight,cropInfo.optimalLight,cropInfo.optimalLight,],
             }
         ],
 
@@ -109,7 +111,7 @@ var myLineChart = new Chart(ctx, {
             }],
         },
         legend: {
-            display: false
+            display: true
         },
         tooltips: {
             backgroundColor: "rgb(255,255,255)",
@@ -134,3 +136,4 @@ var myLineChart = new Chart(ctx, {
         }
     }
 });
+}

@@ -27,4 +27,7 @@ socket.on(`cropInfo`, function(data) {
 socket.on(`statistics`, function(data) {
     //console.log(`statistics: ${data}`);
     statistics = JSON.parse(data);
+    console.log(statistics)
+    loadTempGraph();
+    loadSunLightGraph();
 })

@@ -116,11 +116,11 @@ const getHourlyGreenhouseData = function(uniqueId) {
     if (uniqueId != null) {
         db.greenHouses.forEach(greenHouse => {
             if (greenHouse[0].uniqueId == uniqueId) {
-                hourlygreenhouses = greenHouse.slice(-24);
+                hourlygreenhouses = greenHouse.slice(-12);
             }
         });
     } else {
-        hourlygreenhouses = db.greenHouses[0].slice(-24);
+        hourlygreenhouses = db.greenHouses[0].slice(-12);
     }
 
     hourlygreenhouses.forEach(hourlygreenhouse => {
