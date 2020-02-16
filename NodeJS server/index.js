@@ -44,7 +44,7 @@ io.on(`connection`, function(socket) {
 
     socket.on('chat', function(msg) {
         handleChatMessage(msg);
-        sendInfoViaWS('chat', "Nee ga weg.");
+        sendInfoViaWS('chat', "Service desk unavailable");
     })
 
 })
