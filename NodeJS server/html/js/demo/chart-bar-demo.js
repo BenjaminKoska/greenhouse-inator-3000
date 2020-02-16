@@ -1,37 +1,31 @@
 // Set new default font family and font color to mimic Bootstrap's default styling
+
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
+let optimalData = getDataToCompareTo();
 
-let optimalData = { temperature: 23.00, humidity: 85.00, lux: 37500, pressure: 1.00 };
-
-/*
-async function init() {
-    console.log("pie script loaded");
-    sensorData = await getAllData(recentInfoUrl);
-
-    generateList();
-    updateInfo(0); //open page with current page displaying info of sensor 1
-}
-
-
-
-async function getDataToCompareTo(url = ``) {
-    const response = await fetch(url, {
+async function getDataToCompareTo() {
+    const response = await fetch("http://localhost/crop/Tomatoes", {
         method: `GET`,
         mode: `cors`
     });
-    return await response.json()
-}
-*/
 
-function calculateScore() {
-    let currentValues = { temperature: 15.00, humidity: 95.00, lux: 20500, pressure: 0.80 };
+    return await response.json();
+}
+
+
+async function calculateScore() {
+    await init();
+
+    console.log(optimalData);
+    let currentValues = { temperature: curTemp, humidity: curHumid, lux: curLight, pressure: parseFloat(curPress) };
+    console.log(currentValues);
     let scores = [
-        Math.abs((currentValues.temperature / optimalData.temperature) - 1),
-        Math.abs((currentValues.humidity / optimalData.humidity) - 1),
-        Math.abs((currentValues.lux / optimalData.lux) - 1),
-        Math.abs((currentValues.pressure / optimalData.pressure) - 1)
+        Math.abs((currentValues.temperature / parseFloat(optimalData.optimalTemperature)) - 1),
+        Math.abs((currentValues.humidity / parseFloat(optimalData.optimalHumidity)) - 1),
+        Math.abs((currentValues.lux / parseFloat(optimalData.optimalLight)) - 1),
+        Math.abs((currentValues.pressure / parseFloat(optimalData.optimalPressure)) - 1)
     ];
 
     scores[0] = Math.abs(scores[0] - 1) * 100;

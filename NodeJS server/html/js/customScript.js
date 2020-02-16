@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', init);
 const recentInfoUrl = `http://localhost/recent`;
 
 const doorStatusCard = document.querySelector(`#doorStatusCard`);
@@ -9,13 +10,14 @@ const doorInfoCard = document.querySelector(`#doorInfoCard`);
 
 const sensorSidebar = document.querySelector(`#sensorSidebar`);
 
+let id = null;
 let isDoorOpen = null;
 let curTemp = null;
 let curPress = null;
 let curHumid = null;
+let curLight = null;
 
-let sensorData = [
-    {
+let sensorData = [{
         "uniqueId": "mock 1",
         "light": 5000,
         "humidity": 30,
@@ -53,8 +55,8 @@ async function init() {
     console.log("custom script loaded");
     sensorData = await getAllData(recentInfoUrl); //TODO remove commenting if you want to call to the db
 
-    generateList();
-    updateInfo(0); //open page with current page displaying info of sensor 1
+    await generateList();
+    await updateInfo(0); //open page with current page displaying info of sensor 1
 }
 
 async function getAllData(url = ``) {
@@ -65,12 +67,14 @@ async function getAllData(url = ``) {
     return await response.json()
 }
 
-let updateInfo = (clickedItem) => {
+let updateInfo = async(clickedItem) => {
     console.log(sensorData[clickedItem]);
+    id = sensorData[clickedItem].uniqueId;
     isDoorOpen = sensorData[clickedItem].doorOpen;
     curTemp = sensorData[clickedItem].temperature;
-    curPress = (sensorData[clickedItem].pressure/100000).toFixed(2);
+    curPress = (sensorData[clickedItem].pressure / 100000).toFixed(2);
     curHumid = sensorData[clickedItem].humidity;
+    curLight = sensorData[clickedItem].light;
 
     if (isDoorOpen == 1) {
         openDoor()
@@ -104,7 +108,7 @@ let openDoor = () => {
                                 </div>
                             </div>
                         </div>`;
-};  //show door that is opened
+}; //show door that is opened
 
 let closeDoor = () => {
     doorStatusCard.classList.remove('fa-door-open');
@@ -191,5 +195,3 @@ let generateList = () => {
 
     sensorSidebar.innerHTML = resultList;
 }; //generate the list of sensors
-
-document.addEventListener('DOMContentLoaded', init);
