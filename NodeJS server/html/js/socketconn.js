@@ -8,26 +8,27 @@ let allSensors;
 let counter = 0;
 
 socket.on(`realTimeData`, async function (data) {
-    console.log(`update this now: ${data}`);
+    //console.log(`update this now: ${data}`);
     currentData = JSON.parse(data);
     updateRealTime();
     counter++
 
-    if (counter == 6) {
-        counter = 0;
-        await sleep(500);
-        mySunChart.data.datasets[0].data.shift();
-        mySunChart.data.datasets[0].data.push(currentData.light);
-        mySunChart.update();
+    // if (counter == 6) {
+    //     counter = 0;
+    await sleep(500);
+    mySunChart.data.datasets[0].data.shift();
+    mySunChart.data.datasets[0].data.push(currentData.light);
+    mySunChart.update();
 
-        myHumChart.data.datasets[0].data.shift();
-        myHumChart.data.datasets[0].data.push(currentData.humidity);
-        myHumChart.update();
+    myHumChart.data.datasets[0].data.shift();
+    myHumChart.data.datasets[0].data.push(currentData.humidity);
+    myHumChart.update();
 
-        myTempChart.data.datasets[0].data.shift();
-        myTempChart.data.datasets[0].data.push(currentData.temperature);
-        myTempChart.update();
-    }
+    myTempChart.data.datasets[0].data.shift();
+    myTempChart.data.datasets[0].data.push(currentData.temperature);
+    myTempChart.update();
+
+    //}
 
 })
 
@@ -54,19 +55,6 @@ socket.on(`statistics`, function (data) {
 })
 
 
-socket.on(`statisticsUpdate`, function (data) {
-    //console.log(`statistics: ${data}`);
-    statistics = JSON.parse(data);
-    console.log(statistics)
-    //myBarChart.data.datasets[0] = data;
-    //myBarChart.update();
-
-
-    // myHumChart
-    // myTempChart
-
-
-})
 
 socket.on(`chat`, function (data) {
     addServerMessage(data);
