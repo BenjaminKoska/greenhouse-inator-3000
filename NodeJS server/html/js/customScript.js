@@ -1,4 +1,3 @@
-document.addEventListener('DOMContentLoaded', init);
 const recentInfoUrl = `http://localhost/recent`;
 
 const doorStatusCard = document.querySelector(`#doorStatusCard`);
