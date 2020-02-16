@@ -9,21 +9,19 @@ socket.on(`realTimeData`, function(data) {
     console.log(`update this now: ${data}`);
     currentData = JSON.parse(data);
     updateRealTime();
-
 })
 
 socket.on(`allSensors`, function(data) {
     //console.log(`less important: ${data}`);
     allSensors = JSON.parse(data);
-    console.log(allSensors);
+    //console.log(allSensors);
     generateList();
 })
-
-
 
 socket.on(`cropInfo`, function(data) {
     //console.log(`less important: ${data}`);
     cropInfo = JSON.parse(data);
+    calculateScore();
 })
 
 socket.on(`statistics`, function(data) {

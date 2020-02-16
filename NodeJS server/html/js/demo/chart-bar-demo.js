@@ -3,29 +3,16 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
-let optimalData = getDataToCompareTo();
+let scores;
 
-async function getDataToCompareTo() {
-    const response = await fetch("http://localhost/crop/Tomatoes", {
-        method: `GET`,
-        mode: `cors`
-    });
-
-    return await response.json();
-}
-
-
-async function calculateScore() {
-    await init();
-
-    console.log(optimalData);
-    let currentValues = { temperature: curTemp, humidity: curHumid, lux: curLight, pressure: parseFloat(curPress) };
-    console.log(currentValues);
-    let scores = [
-        Math.abs((currentValues.temperature / parseFloat(optimalData.optimalTemperature)) - 1),
-        Math.abs((currentValues.humidity / parseFloat(optimalData.optimalHumidity)) - 1),
-        Math.abs((currentValues.lux / parseFloat(optimalData.optimalLight)) - 1),
-        Math.abs((currentValues.pressure / parseFloat(optimalData.optimalPressure)) - 1)
+function calculateScore() {
+    console.log(currentData);
+    console.log(cropInfo);
+    scores = [
+        Math.abs((currentData.temperature / parseFloat(cropInfo.optimalTemperature)) - 1),
+        Math.abs((currentData.humidity / parseFloat(cropInfo.optimalHumidity)) - 1),
+        Math.abs((currentData.light / parseFloat(cropInfo.optimalLight)) - 1),
+        Math.abs((currentData.pressure / parseFloat(cropInfo.optimalPressure)) - 1)
     ];
 
     scores[0] = Math.abs(scores[0] - 1) * 100;
@@ -33,7 +20,7 @@ async function calculateScore() {
     scores[2] = Math.abs(scores[2] - 1) * 100;
     scores[3] = Math.abs(scores[3] - 1) * 100;
     console.log(scores);
-    return scores;
+    displayChart();
 }
 
 function number_format(number, decimals, dec_point, thousands_sep) {
@@ -60,83 +47,85 @@ function number_format(number, decimals, dec_point, thousands_sep) {
     }
     return s.join(dec);
 }
+const displayChart = function() {
+    // Bar Chart Example
+    var ctx = document.getElementById("myBarChart");
 
-// Bar Chart Example
-var ctx = document.getElementById("myBarChart");
-var myBarChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ["Temperature", "Humitidy", "Light", "Pressure"],
-        datasets: [{
+    var myBarChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["Temperature", "Humitidy", "Light", "Pressure"],
+            datasets: [{
 
-            backgroundColor: "#4e73df",
-            hoverBackgroundColor: "#2e59d9",
-            borderColor: "#4e73df",
-            data: calculateScore(),
-        }],
-    },
-    options: {
-        maintainAspectRatio: false,
-        layout: {
-            padding: {
-                left: 10,
-                right: 25,
-                top: 25,
-                bottom: 0
-            }
-        },
-        scales: {
-            xAxes: [{
-                gridLines: {
-                    display: false,
-                    drawBorder: false
-                },
-                ticks: {
-                    maxTicksLimit: 6,
-                },
-                maxBarThickness: 25,
+                backgroundColor: "#4e73df",
+                hoverBackgroundColor: "#2e59d9",
+                borderColor: "#4e73df",
+                data: scores,
             }],
-            yAxes: [{
-                ticks: {
-                    min: 0,
-                    max: 100,
-                    maxTicksLimit: 5,
-                    stepSize: 0.5,
-                    padding: 10,
-                    // Include a dollar sign in the ticks
-                    callback: function(value, index, values) {
-                        return number_format(value);
+        },
+        options: {
+            maintainAspectRatio: false,
+            layout: {
+                padding: {
+                    left: 10,
+                    right: 25,
+                    top: 25,
+                    bottom: 0
+                }
+            },
+            scales: {
+                xAxes: [{
+                    gridLines: {
+                        display: false,
+                        drawBorder: false
+                    },
+                    ticks: {
+                        maxTicksLimit: 6,
+                    },
+                    maxBarThickness: 25,
+                }],
+                yAxes: [{
+                    ticks: {
+                        min: 0,
+                        max: 100,
+                        maxTicksLimit: 5,
+                        stepSize: 0.5,
+                        padding: 10,
+                        // Include a dollar sign in the ticks
+                        callback: function(value, index, values) {
+                            return number_format(value);
+                        }
+                    },
+                    gridLines: {
+                        color: "rgb(234, 236, 244)",
+                        zeroLineColor: "rgb(234, 236, 244)",
+                        drawBorder: false,
+                        borderDash: [2],
+                        zeroLineBorderDash: [2]
                     }
-                },
-                gridLines: {
-                    color: "rgb(234, 236, 244)",
-                    zeroLineColor: "rgb(234, 236, 244)",
-                    drawBorder: false,
-                    borderDash: [2],
-                    zeroLineBorderDash: [2]
+                }],
+            },
+            legend: {
+                display: false
+            },
+            tooltips: {
+                titleMarginBottom: 10,
+                titleFontColor: '#6e707e',
+                titleFontSize: 14,
+                backgroundColor: "rgb(255,255,255)",
+                bodyFontColor: "#858796",
+                borderColor: '#dddfeb',
+                borderWidth: 1,
+                xPadding: 15,
+                yPadding: 15,
+                displayColors: false,
+                caretPadding: 10,
+                callbacks: {
+                    label: function(tooltipItem, chart) {
+                        return `Score: ${number_format(tooltipItem.yLabel)}/100`;
+                    }
                 }
-            }],
-        },
-        legend: {
-            display: false
-        },
-        tooltips: {
-            titleMarginBottom: 10,
-            titleFontColor: '#6e707e',
-            titleFontSize: 14,
-            backgroundColor: "rgb(255,255,255)",
-            bodyFontColor: "#858796",
-            borderColor: '#dddfeb',
-            borderWidth: 1,
-            xPadding: 15,
-            yPadding: 15,
-            displayColors: false,
-            caretPadding: 10,
-            callbacks: {
-                label: function(tooltipItem, chart) {
-                    return `Score: ${number_format(tooltipItem.yLabel)}/100`;
-                }
-            }
-        },
-    }
-});
+            },
+        }
+    })
+};

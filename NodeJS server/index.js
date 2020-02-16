@@ -36,6 +36,7 @@ io.on(`connection`, function(socket) {
     sendInfoViaWS('allSensors', JSON.stringify(getAllSensors()))
     sendInfoViaWS('realTimeData', JSON.stringify(getMostRecentForFirstGreenhouses()))
     sendInfoViaWS('statistics', JSON.stringify(getHourlyGreenhouseData()))
+    sendInfoViaWS('cropInfo', JSON.stringify(getCropInfo()))
 
     socket.on('msg', function(msg) {
         handleClientMsg(msg);
@@ -100,6 +101,10 @@ const updateDB = async function() {
     db = await readInDB(`${__dirname}/db.db`);
 }
 
+const getCropInfo = function() {
+    return db.plants[0];
+}
+
 const getHourlyGreenhouseData = function(uniqueId) {
     let hourlygreenhouses;
 
@@ -130,7 +135,7 @@ const getHourlyGreenhouseData = function(uniqueId) {
 
 const getAllSensors = function() {
     let allSensors = [];
-    
+
     db.greenHouses.forEach(greenHouse => {
         allSensors.push(greenHouse[0].uniqueId);
     });
