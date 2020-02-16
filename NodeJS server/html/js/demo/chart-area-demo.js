@@ -1,12 +1,15 @@
 // Set new default font family and font color to mimic Bootstrap's default styling
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
+let myHumChart;
+let myTempChart;
+
 
 let loadTempGraph = async function(){
 // Area Chart Example
 await sleep(300);
 var ctx = document.getElementById("myAreaChart");
-var myLineChart = new Chart(ctx, {
+myTempChart = new Chart(ctx, {
   type: 'line',
   data: {
     labels: ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00"],
@@ -114,7 +117,7 @@ let loadHumGraph = async function(){
   // Area Chart Example
   await sleep(300);
   var ctx = document.getElementById("myAreaChartHumidity");
-  var myLineChart = new Chart(ctx, {
+  myHumChart = new Chart(ctx, {
     type: 'line',
     data: {
       labels: ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00"],

@@ -2,6 +2,8 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
+let mySunChart
+
 function number_format(number, decimals, dec_point, thousands_sep) {
     // *     example: number_format(1234.56, 2, ',', ' ');
     // *     return: '1 234,56'
@@ -31,7 +33,7 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 const loadSunLightGraph = async function(){
 await sleep(300);
 var ctx = document.getElementById("SunlightChart");
-var myLineChart = new Chart(ctx, {
+mySunChart = new Chart(ctx, {
     type: 'line',
     data: {
         labels: ["00:00", "01:00", "02:00","03:00","04:00", "05:00", "06:00","07:00","08:00", "09:00", "10:00","11:00"],

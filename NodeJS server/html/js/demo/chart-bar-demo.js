@@ -5,6 +5,8 @@ Chart.defaults.global.defaultFontColor = '#858796';
 
 let scores;
 
+let myBarChart;
+
 function calculateScore() {
     console.log(currentData);
     console.log(cropInfo);
@@ -51,7 +53,7 @@ const displayChart = function() {
     // Bar Chart Example
     var ctx = document.getElementById("myBarChart");
 
-    var myBarChart = new Chart(ctx, {
+    myBarChart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: ["Temperature", "Humitidy", "Light", "Pressure"],

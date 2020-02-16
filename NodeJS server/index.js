@@ -168,7 +168,10 @@ const mqttClientConnect = async function() {
                     if (topic == `/DeCodeBadgers/API`) {
                         let data = message.toString();
                         sendInfoViaWS(`realTimeData`, data);
-                        addDataToDB(JSON.parse(data));
+                        sendInfoViaWS('statisticsUpdate', JSON.stringify(getHourlyGreenhouseData()));
+                        sendInfoViaWS('cropInfoUpdate', JSON.stringify(getCropInfo())); 
+
+                        addDataToDB(JSON.parse(data));                   
                     } else {
                         console.log(topic, message.toString());
                     }
