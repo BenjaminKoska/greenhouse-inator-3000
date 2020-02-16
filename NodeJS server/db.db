@@ -31575,7 +31575,13 @@
       }
     ]
   ],
-  "greenHouseNames": [],
+  "greenHouseInfo": [
+    {
+      "uniqueId":1,
+      "name":"Greenhouse",
+      "vegetable":"Tomatoes"
+    }
+  ],
   "plants": [
     {
       "name": "Tomatoes",
